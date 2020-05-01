@@ -1,0 +1,14 @@
+server:
+  port: 8181
+spring:
+  application:
+    name: load-balancer-1
+eureka:
+  instance:
+    hostname: load-balancer-1-service.default.svc.cluster.local
+    non-secure-port: 80
+  client:
+    serviceUrl:
+      defaultZone: http://registry-service.default.svc.cluster.local:80/eureka/
+  healthcheck:
+    enabled: true

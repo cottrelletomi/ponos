@@ -1,0 +1,8 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: registry
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false

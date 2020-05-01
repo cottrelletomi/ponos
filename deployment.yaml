@@ -1,0 +1,254 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web
+          image: image-web
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  selector:
+    app: web
+  ports:
+    - name: http
+      targetPort: 80
+      port: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry
+  template:
+    metadata:
+      labels:
+        app: registry
+    spec:
+      containers:
+        - name: registry
+          image: image-registry
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry-service
+spec:
+  selector:
+    app: registry
+  ports:
+    - name: http
+      targetPort: 8761
+      port: 80
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gateway
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+        - name: gateway
+          image: image-gateway
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-service
+spec:
+  selector:
+    app: gateway
+  ports:
+    - name: http
+      targetPort: 8080
+      port: 80
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-balancer-1-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: load-balancer-1
+  template:
+    metadata:
+      labels:
+        app: load-balancer-1
+    spec:
+      containers:
+        - name: load-balancer-1
+          image: image-load-balancer-1
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: load-balancer-1-service
+spec:
+  selector:
+    app: load-balancer-1
+  ports:
+    - name: http
+      targetPort: 8181
+      port: 80
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-balancer-2-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: load-balancer-2
+  template:
+    metadata:
+      labels:
+        app: load-balancer-2
+    spec:
+      containers:
+        - name: load-balancer-2
+          image: image-load-balancer-2
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: load-balancer-2-service
+spec:
+  selector:
+    app: load-balancer-2
+  ports:
+    - name: http
+      targetPort: 8282
+      port: 80
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-service-1-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micro-service-1
+  template:
+    metadata:
+      labels:
+        app: micro-service-1
+    spec:
+      containers:
+      - name: micro-service-1
+        image: image-micro-service-1
+        imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micro-service-1-service
+spec:
+  selector:
+    app: micro-service-1
+  ports:
+    - name: http
+      targetPort: 8383
+      port: 80
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-service-2-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micro-service-2
+  template:
+    metadata:
+      labels:
+        app: micro-service-2
+    spec:
+      containers:
+        - name: micro-service-2
+          image: image-micro-service-2
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micro-service-2-service
+spec:
+  selector:
+    app: micro-service-2
+  ports:
+    - name: http
+      targetPort: 8484
+      port: 80
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-service-3-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micro-service-3
+  template:
+    metadata:
+      labels:
+        app: micro-service-3
+    spec:
+      containers:
+        - name: micro-service-3
+          image: image-micro-service-3
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micro-service-3-service
+spec:
+  selector:
+    app: micro-service-3
+  ports:
+    - name: http
+      targetPort: 8585
+      port: 80
+  type: ClusterIP

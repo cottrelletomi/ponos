@@ -1,0 +1,15 @@
+<!-- Heading -->
+<div id="heading" >
+  <h1>Annonces</h1>
+</div>
+
+<!-- Main -->
+<section id="main" class="wrapper">
+  <div class="inner">
+    <div class="content" [hidden]="auth < 0">
+      <button (click)="postAds()">Nouvelle annonce</button>
+    </div>
+  </div>
+  <app-ad *ngFor="let ad of ads" [ad]="ad" [auth]="auth"></app-ad>
+
+</section>

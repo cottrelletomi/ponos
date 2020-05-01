@@ -1,0 +1,12 @@
+{
+  "/companies/*": {
+    "target": "http://gateway-service.default.svc.cluster.local:80",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/ads/*": {
+    "target": "http://gateway-service.default.svc.cluster.local:80",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

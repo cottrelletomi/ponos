@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: web.localhost
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: web-service
+              servicePort: http
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: gateway.localhost
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: gateway-service
+              servicePort: http

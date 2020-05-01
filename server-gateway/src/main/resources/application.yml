@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway
+zuul:
+  routes:
+    companies:
+      path: /companies/**
+      url: http://load-balancer-1-service.default.svc.cluster.local:80/companies/
+    ads:
+      path: /ads/**
+      url: http://load-balancer-2-service.default.svc.cluster.local:80/ads/

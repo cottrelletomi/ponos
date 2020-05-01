@@ -1,0 +1,56 @@
+<!-- Heading -->
+<div id="heading" >
+  <h1>Se connecter</h1>
+</div>
+
+<!-- Main -->
+<section id="main" class="wrapper">
+  <div class="inner">
+    <div class="content">
+
+
+        <div class="row gtr-uniform">
+
+          <div class="col-6 col-12-xsmall">
+            <h3>Se connecter</h3>
+            <form (ngSubmit)="connection(fc)" #fc="ngForm">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" placeholder="Email" ngModel required />
+              <br/>
+              <label for="password">Mot de passe</label>
+              <input type="password" name="password" id="password" placeholder="Mot de passe" ngModel required />
+              <br/>
+              <button type="submit" class="button" [disabled]="fc.invalid">Se connecter</button>
+            </form>
+          </div>
+
+          <div class="col-6 col-12-xsmall">
+            <h3>S'inscrire</h3>
+            <form (ngSubmit)="registration(fr)" #fr="ngForm">
+              <label for="corporate_name">Raison Sociale</label>
+              <input type="text" name="corporate_name" id="corporate_name" placeholder="Raison sociale" ngModel required />
+              <br/>
+              <label for="siren">Siren</label>
+              <input type="text" name="siren" id="siren" placeholder="Siren" ngModel required />
+              <br/>
+              <label for="address">Adresse</label>
+              <input type="text" name="address" id="address" placeholder="Adresse" ngModel required />
+              <br/>
+              <label for="email2">Email</label>
+              <input type="email" name="email" id="email2" placeholder="Email" ngModel required />
+              <br/>
+              <label for="password2">Mot de passe</label>
+              <input type="password" name="password" id="password2" placeholder="Mot de passe" ngModel required />
+              <br/>
+              <button type="submit" class="button" [disabled]="fr.invalid">S'inscrire</button>
+            </form>
+          </div>
+        </div>
+
+
+
+
+
+    </div>
+  </div>
+</section>

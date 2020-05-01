@@ -1,0 +1,22 @@
+<div class="inner">
+  <div class="content">
+    <header>
+      <h2>{{ad.title}}</h2>
+    </header>
+    <h3>Description</h3>
+    <p>{{ad.description}}</p>
+    <h3>Rémunération</h3>
+    <p>{{ad.remuneration}} €</p>
+    <hr/>
+    <div [hidden]="auth < 0">
+      <button (click)="putAds()" class="button">Modifier</button>
+      <button (click)="deleteAds()" class="button primary button-spacer">Supprimer</button>
+    </div>
+    <div [hidden]="auth > 0">
+      <button (click)="postRemarks()" class="remark-btn-spacer">Nouveau commentaire</button>
+      <div class="remark-wrapper">
+        <app-remarks *ngFor="let remark of remarks" [remark]="remark"></app-remarks>
+      </div>
+    </div>
+  </div>
+</div>

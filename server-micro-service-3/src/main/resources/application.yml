@@ -1,0 +1,17 @@
+server:
+  port: 8585
+spring:
+  application:
+    name: micro-service-2
+  h2:
+    console:
+      enabled: true
+eureka:
+  instance:
+    hostname: micro-service-3-service.default.svc.cluster.local
+    non-secure-port: 80
+  client:
+    serviceUrl:
+      defaultZone: http://registry-service.default.svc.cluster.local:80/eureka/
+  healthcheck:
+    enabled: true
