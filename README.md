@@ -1,2 +1,1 @@
-# ponos
-![]()
+![](architecture.jpg)
